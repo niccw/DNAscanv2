@@ -1619,7 +1619,7 @@ if results_report:
 
             #22.2 Concise results report for all variants called (SV, MEI, expansion, SNVs and indels)
             if os.path.isfile("%s/reports/%s_annovar_SNPindelvariants.txt" % (out, sample_name)) == True:
-                if SV_results_file == "%s/results/%s_SV_merged.vcf.gz" % (out, sample_name) or os.path.isfile("%s/results/%s_MEI.vcf.gz" % (out, sample_name)) == True:
+                if os.path.isfile("%s/results/%s_SV_merged.vcf.gz" % (out, sample_name)) == True or os.path.isfile("%s/results/%s_MEI.vcf.gz" % (out, sample_name)) == True:
                     if os.path.isfile("%s/results/%s_annotated_SV.tsv" % (out, sample_name)) == True and SV:
                         annotsv_file = SV_annotation_file
 
