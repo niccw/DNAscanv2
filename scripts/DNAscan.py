@@ -1621,10 +1621,10 @@ if results_report:
             if os.path.isfile("%s/reports/%s_annovar_SNPindelvariants.txt" % (out, sample_name)) == True:
                 if os.path.isfile("%s/results/%s_SV_merged.vcf.gz" % (out, sample_name)) == True or os.path.isfile("%s/results/%s_MEI.vcf.gz" % (out, sample_name)) == True:
                     if os.path.isfile("%s/results/%s_annotated_SV.tsv" % (out, sample_name)) == True and SV:
-                        annotsv_file = SV_annotation_file
+                        annotsv_file = "%s/results/%s_annotated_SV.tsv" % (out, sample_name)
 
                     if not SV and os.path.isfile("%s/results/%s_annotated_MEI.tsv" % (out, sample_name)) == True:
-                        annotsv_file = MEI_annotation_file
+                        annotsv_file = "%s/results/%s_annotated_MEI.tsv" % (out, sample_name)
 
                     print("\nGenerating a concise results report for all annotated variants (SNVs, indels, expansion, SV and/or MEI)...\n")
 
@@ -1633,7 +1633,7 @@ if results_report:
 
                 else:
                     if os.path.isfile("%s/results/%s_annotated_SV_MEI.tsv" % (out, sample_name)) == True:
-                        annotsv_file = SV_MEI_annotation_file
+                        annotsv_file = "%s/results/%s_annotated_SV_MEI.tsv" % (out, sample_name)
 
                     print("\nGenerating a concise results report for all annotated variants (SNVs, indels, expansion, SV and/or MEI)...\n")
 
