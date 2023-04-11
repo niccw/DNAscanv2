@@ -1648,7 +1648,9 @@ if results_report:
 
                 os.system("cp %sall_variants_report_header.txt %s/reports/%s_all_variants.tsv" % (path_scripts, out, sample_name))
                 os.system("tail -n +2 %s/reports/temp_%s_snvindel_variants.tsv >> %s/reports/%s_all_variants.tsv" % (out, sample_name, out, sample_name))
-                os.system("tail -n +2 %s/reports/temp_%s_SV_variants.tsv >> %s/reports/%s_all_variants.tsv" % (out, sample_name, out, sample_name))
+                
+                if os.path.isfile("%s/reports/temp_%s_SV_variants.tsv" % (out, sample_name)) == True:
+                    os.system("tail -n +2 %s/reports/temp_%s_SV_variants.tsv >> %s/reports/%s_all_variants.tsv" % (out, sample_name, out, sample_name))
 
                 if os.path.isfile("%s/reports/%s_annovar_expansionvariants.txt" % (out, sample_name)) == True:
                     os.system("cat %s/reports/%s_annovar_expansionvariants.txt | awk '{print $1 \"\t\" $2 \"\t\" $9 \"\t\" $5 \"\t\" $7 \"\t\" $6 \"\t\" $10 \"\t\" $91 \"\t\" $79 \"\t\" $77 \"\t\" $78 \"\t\" $83 \"\t\" $120 \"\t\" $121}' | awk -v OFS='\t' '{$3=\"STR\" ; print ;}' | awk -v OFS='\t' '{split($9,a,/:/);$9=a[5]}1' | awk -v OFS='\t' ' {NR==1?$8=\"Overlapping_Genes\t\"$8:$8=\"\t\"$8 } 1 ' | awk -v OFS='\t' ' {NR==1?$11=\"OMIM_Phenotype\t\"$11:$11=\"\t\"$11 } 1 ' > %s/reports/temp_%s_expansion_variants.tsv" % (out, sample_name, out, sample_name))
