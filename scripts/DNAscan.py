@@ -995,7 +995,7 @@ if SV or MEI:
         print("\nMerging of SV and MEI variant calls is complete.\n")
 
         if not debug:
-            os.system("rm %s/results/survivor_sample_files %s/results/*.vcf" % (out, out, out, sample_name))
+            os.system("rm %s/results/survivor_sample_files %s/results/*.vcf" % (out, out))
 
 # 16. Annotation with Annovar with optional missense variant prioritisation according to ACMG guidelines (intervar_20180118 database)
 
