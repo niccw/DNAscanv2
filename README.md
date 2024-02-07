@@ -36,8 +36,8 @@ Figure 1. Central panel: Pipeline overview. DNAscan2 accepts sequencing data and
 Original DNAscan publication:
 [Alfredo Iacoangeli et al. DNAscan: personal computer compatible NGS analysis, annotation and visualisation. BMC Bioinformatics, 2019](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2791-8)
 
-DNAscan2:
-Coming soon...
+DNAscan2 (if using this software please cite this publication):
+[Heather Marriott et al. DNAscan2: a versatile, scalable and user-friendly analysis pipeline for human next-generation sequencing data. Bioinformatics, 2023](https://academic.oup.com/bioinformatics/article/39/4/btad152/7100339?login=false)
 
 ## Documentation
 
