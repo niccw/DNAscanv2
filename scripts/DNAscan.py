@@ -1039,7 +1039,7 @@ if annotation:
             print("\nSNP and indel annotation is complete.\n")
 
         if expansion:
-            if os.path.isfile(EHDNexpansion_results_file) == True:
+            if os.path.isfile("%s/results/%s_EHDNexpansions.vcf.gz" % (out, sample_name)) == True:
                 print('Repeat expansions and short tandem repeats called with ExpansionHunter software are being merged with SURVIVOR to create a union callset...\n')
                 os.system("gzip -dk %s/results/*expansions.vcf.gz" % (out, sample_name))
                 os.system("ls %s/results/*expansions.vcf > %s/results/survivor_expansion_sample_files" % (out, out))
