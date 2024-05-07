@@ -105,6 +105,7 @@ requiredNamed.add_argument(
 
 args = parser.parse_args()
 alsgenescanner = args.alsgenescanner
+score_als_genes = args.score_als_genes
 exome = args.exome
 format = args.format
 paired = args.paired
@@ -219,6 +220,7 @@ if alsgenescanner:
     path_gene_list = ""
     annovar_operations = "g,f,f,f"
     annovar_protocols = "refGene,dbnsfp33a,clinvar_20210501,intervar_20180118"
+    score_als_genes = True
 
     if reference == "hg19":
         path_bed = '%s/als_gene_scanner_hg19.bed' % (path_to_db)
@@ -1019,7 +1021,7 @@ if annotation:
                 % (path_annovar, num_cpu, variant_results_file, path_annovar_db,
                    reference, annovar_protocols, annovar_operations, out))
 
-            if not debug and not alsgenescanner:
+            if not debug and not (alsgenescanner or score_als_genes):
                 os.system(
                     "rm %sannovar_SNPindel.vcf.%s_multianno.txt %sannovar_SNPindel.vcf.avinput" %
                     (out, reference, out))
@@ -1710,7 +1712,7 @@ if iobio:
         else:
             print("https://gene.iobio.io")
 
-if alsgenescanner:
+if (alsgenescanner or score_als_genes) and os.path.isfile("%s/annovar.vcf.%s_multianno.txt" % (out, sample_name)) == True:
     print("\n\nALSGeneScanner is running...\n\n")
     os.system(
         "python3 %s/alsgenescanner.py %s/annovar.vcf.%s_multianno.txt %s/results/%s_alsgenescanner_all.txt"
@@ -1732,3 +1734,5 @@ if alsgenescanner:
         % (out, sample_name, out, sample_name, out, sample_name, out, sample_name,
            out, sample_name, out, sample_name))
     print("\n\nALSGeneScanner is complete.\n\n")
+else:
+    print("\nWARNING: You have indicated you want to score the SNVs in ALS genes, but you have not got a annotation file - please run DNAscan2 with the --annotation and --score_als_genes flags if not in ALSgeneScanner mode or re-run DNAscan2 again.\n")
