@@ -39,6 +39,15 @@ def create_parser():
   )
 
   parser.add_argument(
+      '-score_als_genes',
+      action="store_true",
+      dest="score_als_genes",
+      default=False,
+      help=
+      'if this flag is set DNAscan will score SNVs of ALS genes according to pathogenicity (part of ALSgeneScanner) (Default = "False")'
+  )
+
+  parser.add_argument(
       '-filter_string',
       action="store",
       dest="filter_string",
